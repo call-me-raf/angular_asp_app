@@ -1,0 +1,51 @@
+﻿<br />
+<div class="text-center">
+    <a href="#/addword" class="btn btn-primary"><h4>Зашифровать новое слово</h4></a>
+</div><br />
+<form action="#/" class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Введите слово:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="word.NewWord" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" class="btn btn-success" ng-click="createWord(word)" value="Зашифровать" />
+        </div>
+    </div>
+</form>
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        <h4>Список слов</h4>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Новое слово</th>
+                    <th class="text-center">Время</th>
+                    <th class="text-center">Изменить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in words">
+                    <td class="text-center">{{i.NewWord}}</td>
+                    <td class="text-center">{{i.DateTime.slice(6,19) | date:'medium'}}</td>
+                    <td class="text-center">
+                        <div class="text-center">
+                            <a href="" class="btn btn-primary" ng-click="deleteWord(i.Id)">Delete</a> |
+                            <a href="" class="btn btn-primary" ng-click="reverseWord(i.Id)">Reverse</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-if="!words || words.length == 0">
+                    <td colspan="3" style="text-align: center">
+                        Нет данных для просмотра
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
